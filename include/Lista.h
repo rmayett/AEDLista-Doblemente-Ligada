@@ -1,3 +1,5 @@
+/*Rodrigo Mayett Guzman
+El programa define los constructores de la lista*/
 #include "Nodo.h"
 
 class Lista

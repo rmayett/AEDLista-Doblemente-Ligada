@@ -1,10 +1,10 @@
+/*Rodrigo Mayett Guzman
+Es el programa principal de la lista*/
 #include "Lista.h"
-
-
 
 int main()
 {
-	Lista l = Lista();
+	Lista l = Lista();//crea una lista vacia
 	l.AddInicio(4);
 	l.AddInicio(5);
 	l.AddFinal(10);

@@ -1,26 +1,29 @@
+/*Rodrigo Mayett Guzman 
+define los metodos de la lista*/
 #include "Lista.h"
-
-Lista::Lista()//el metodo crea una lista vacia 
+//el metodo crea una lista vacia
+Lista::Lista() 
 {
 	this->H=NULL;
 	this->T=NULL;
 }
-
-Lista::Lista(int Dato)//el metodo crea una lista con un dato
+//el metodo crea una lista con un dato
+Lista::Lista(int Dato)
 {
 	Nodo * aux= new Nodo(Dato);
 	this->H=aux;
 	this->T=aux;
 }
-
-bool Lista::ListaVacia()//el metodo revisa si la lista esta vacia
+//el metodo revisa si la lista esta vacia
+bool Lista::ListaVacia()
 {
 	if (this->H == NULL && this->T == NULL)
 		return true;
 	return false;
 }
-
-void Lista::AddInicio(int Dato)//el metodo agrega un nodo al inicio
+//el metodo agrega un nodo al inicio 
+//y cambia la referencia de H
+void Lista::AddInicio(int Dato)
 {
 	Nodo* aux = new Nodo(Dato,this->T,this->H);
 	if (ListaVacia())
@@ -29,7 +32,9 @@ void Lista::AddInicio(int Dato)//el metodo agrega un nodo al inicio
 	}
 	this->H= aux;
 }
-void Lista::AddFinal(int Dato){//el metodo agrega un nodo al final
+//el metodo agrega un nodo al final
+//y cambia la referencia de T
+void Lista::AddFinal(int Dato){
 	Nodo * aux = new Nodo(Dato);	
 	if (!ListaVacia())
 	{
@@ -42,7 +47,9 @@ void Lista::AddFinal(int Dato){//el metodo agrega un nodo al final
 		this->T=aux;
 	}		
 }
-void Lista::AddRef(int Dato, int Ref){//el metodo agrega un nodo despues del valor dado como referencia 
+//el metodo agrega un nodo despues 
+//del valor dado como referencia 
+void Lista::AddRef(int Dato, int Ref){
 	if (ListaVacia())
 	{
 		Nodo * aux = new Nodo(Dato);
@@ -66,7 +73,9 @@ void Lista::AddRef(int Dato, int Ref){//el metodo agrega un nodo despues del val
 		std::cout<<"No existe la referenci aen la lista"<<std::endl;
 	}
 }
-int Lista::RemoveInicio(){//remmueve el nodo que se encuentra al inicio y pasa la referencia de H al siguiente
+//remmueve el nodo que se encuentra al inicio
+// y pasa la referencia de H al siguiente
+int Lista::RemoveInicio(){
 	if (!ListaVacia())
 	{
 		int Dato =this->H->getDato();	
@@ -82,7 +91,9 @@ int Lista::RemoveInicio(){//remmueve el nodo que se encuentra al inicio y pasa l
 		std::cout<<"La lista esta vacia"<<std::endl;		
 	}	
 }
-int Lista::RemoveFinal(){//remueve el nodo al final de la lista y pasa la referencia de T al anterior
+//remueve el nodo al final de la lista
+// y pasa la referencia de T al anterior
+int Lista::RemoveFinal(){
 	if (ListaVacia())
 	{
 		std::cout<<"La lista esta vacia"<<std::endl;
@@ -103,7 +114,8 @@ int Lista::RemoveFinal(){//remueve el nodo al final de la lista y pasa la refere
 	}
 	return Dato;
 }
-Nodo * Lista::BuscarElemento(int Dato){//busca un elemento de la lista y imprime el dato encontrado 
+//busca un elemento de la lista y imprime el dato encontrado
+Nodo * Lista::BuscarElemento(int Dato){ 
 	if (ListaVacia())
 	{
 		std::cout<<"No se encuentra el elemento"<<std::endl;
@@ -112,8 +124,8 @@ Nodo * Lista::BuscarElemento(int Dato){//busca un elemento de la lista y imprime
 	Nodo * aux = this->H;
 	while(aux->getDato()!=Dato&&aux!=NULL){
 		aux=aux->getSig();
-		if (aux==NULL)//termina el ciclo en caso de no encontrar el elemento buscado
-		{
+		if (aux==NULL)
+		{//termina el ciclo en caso de no encontrar el elemento buscado
 			std::cout<<"No se encuentra el elemento"<<std::endl;
 			return NULL;
 		}
@@ -124,7 +136,9 @@ Nodo * Lista::BuscarElemento(int Dato){//busca un elemento de la lista y imprime
 	}
 	return aux;
 }
-Nodo * Lista::RemoveRef(int Ref){//remueve un nodo de la lista que tenga el dato usado como referencia
+//remueve un nodo de la lista
+// que tenga el dato usado como referencia
+Nodo * Lista::RemoveRef(int Ref){
 	if (ListaVacia())
 	{
 		std::cout<<"No se encontro la referencia porque la lista esta vacia"<<std::endl;
@@ -148,12 +162,14 @@ Nodo * Lista::RemoveRef(int Ref){//remueve un nodo de la lista que tenga el dato
 		std::cout<<"No existe la referencia en la lista"<<std::endl;
 	}
 }
-int Lista::VaciarLista(){//vacia la lista borrando las referencias	
+//vacia la lista borrando las referencias	
+int Lista::VaciarLista(){
 	this->H=NULL;
 	this->T=NULL;
 	std::cout<<"Lista Vaciada"<<std::endl;	
 }
-void Lista::Show()//muestra los nodos
+//muestra los nodos
+void Lista::Show()
 {
 	Nodo* aux = this->H;
 	while(aux!=NULL)
